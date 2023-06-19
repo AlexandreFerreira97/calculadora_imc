@@ -17,6 +17,14 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Calculadora IMC"),
+        centerTitle: true,
+        backgroundColor: Colors.green,
+        actions:[
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: () {},
+          ),
+        ],
       ),
     );
   }
