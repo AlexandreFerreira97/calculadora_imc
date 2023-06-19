@@ -19,10 +19,39 @@ class _HomeState extends State<Home> {
         title: const Text("Calculadora IMC"),
         centerTitle: true,
         backgroundColor: Colors.green,
-        actions:[
+        actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: () {},
+          ),
+        ],
+      ),
+      backgroundColor: Colors.white,
+      body: const Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Icon(
+            Icons.person_outline,
+            size: 120.0,
+            color: (Colors.green),
+          ),
+          TextField(
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(
+              labelText: "Peso (kg)",
+              labelStyle: TextStyle(color: Colors.green),
+            ),
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.green),
+          ),
+          TextField(
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(
+              labelText: "Altura (cm)",
+              labelStyle: TextStyle(color: Colors.green),
+            ),
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.green),
           ),
         ],
       ),
