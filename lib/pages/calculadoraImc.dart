@@ -23,15 +23,15 @@ class _HomeState extends State<Home> {
         ],
       ),
       backgroundColor: Colors.white,
-      body: const Column(
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Icon(
+          const Icon(
             Icons.person_outline,
             size: 120.0,
             color: (Colors.green),
           ),
-          TextField(
+          const TextField(
             keyboardType: TextInputType.number,
             decoration: InputDecoration(
               labelText: 'Peso (kg)',
@@ -40,7 +40,7 @@ class _HomeState extends State<Home> {
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.green),
           ),
-          TextField(
+          const TextField(
             keyboardType: TextInputType.number,
             decoration: InputDecoration(
               labelText: 'Altura (cm)',
@@ -49,7 +49,20 @@ class _HomeState extends State<Home> {
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.green),
           ),
-          // ElevatedButton(onPressed: () {}, child: Text('Calcular'))
+          ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              primary: const Color(0xff00d7f3),
+              //padding: const EdgeInsets.all(16),
+            ),
+            child: const Text(
+              'Calcular',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 25.0,
+              ),
+            ),
+          )
         ],
       ),
     );
