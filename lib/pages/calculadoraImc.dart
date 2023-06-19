@@ -51,12 +51,11 @@ class _HomeState extends State<Home> {
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.green),
             ),
-            const SizedBox(width: 8),
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
                 primary: const Color(0xff4caf50),
-                padding: const EdgeInsets.only(top:10.0, bottom: 10.0),
+                //padding: const EdgeInsets.only(top:10.0, bottom: 10.0),
               ),
               child: const Text(
                 'Calcular',
