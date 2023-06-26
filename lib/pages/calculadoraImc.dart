@@ -21,13 +21,15 @@ class _HomeState extends State<Home> {
   }
 
   void _calculate(){
-    double weight = double.parse(weightController.text);
-    double height = double.parse(heightController.text) / 100;
-    double imc = weight / (height * height);
+    setState(() {
+      double weight = double.parse(weightController.text);
+      double height = double.parse(heightController.text) / 100;
+      double imc = weight / (height * height);
 
-    if(imc < 18.6){
-      _infoText = 'Abaixo do peso (${imc.toStringAsPrecision(3)})';
-    }
+      if(imc < 18.6){
+        _infoText = 'Abaixo do peso (${imc.toStringAsPrecision(3)})';
+      }
+    });
   }
 
   @override
