@@ -12,7 +12,7 @@ class _HomeState extends State<Home> {
   TextEditingController weightController = TextEditingController();
   TextEditingController heightController = TextEditingController();
 
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   String _infoText = 'Informe seus dados';
 
@@ -21,6 +21,7 @@ class _HomeState extends State<Home> {
     heightController.text = '';
     setState(() {
       _infoText = 'Informe seus dados';
+      _formKey = GlobalKey<FormState>();
     });
   }
 
@@ -68,7 +69,7 @@ class _HomeState extends State<Home> {
       body: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
         child: Form(
-          key: formKey,
+          key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
@@ -77,7 +78,7 @@ class _HomeState extends State<Home> {
                 size: 120.0,
                 color: (Colors.green),
               ),
-              TextField(
+              TextFormField(
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
                   labelText: 'Peso (kg)',
@@ -86,8 +87,13 @@ class _HomeState extends State<Home> {
                 textAlign: TextAlign.center,
                 style: const TextStyle(color: Colors.green),
                 controller: weightController,
+                validator: (value) {
+                  if(value!.isEmpty){
+                    return 'Insira seu peso.';
+                  }
+                },
               ),
-              TextField(
+              TextFormField(
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
                   labelText: 'Altura (cm)',
@@ -96,9 +102,18 @@ class _HomeState extends State<Home> {
                 textAlign: TextAlign.center,
                 style: const TextStyle(color: Colors.green),
                 controller: heightController,
+                validator: (value) {
+                  if(value!.isEmpty){
+                    return 'Insira sua altura.';
+                  }
+                },
               ),
               ElevatedButton(
-                onPressed: _calculate,
+                onPressed: () {
+                  if(_formKey.currentState!.validate()){
+                    _calculate();
+                  }
+                },
                 style: ElevatedButton.styleFrom(
                   primary: const Color(0xff4caf50),
                   //padding: const EdgeInsets.only(top:10.0, bottom: 10.0),
