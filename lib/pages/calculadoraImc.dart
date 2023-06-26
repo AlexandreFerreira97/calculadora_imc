@@ -8,6 +8,28 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  TextEditingController weightController = TextEditingController();
+  TextEditingController heightController = TextEditingController();
+
+  String _infoText = 'Informe seus dados';
+
+  void _resetFields(){
+    weightController.text = '';
+    heightController.text = '';
+    _infoText = 'Informe seus dados';
+  }
+
+  void _calculate(){
+    double weight = double.parse(weightController.text);
+    double height = double.parse(heightController.text) / 100;
+    double imc = weight / (height * height);
+
+    if(imc < 18.6){
+      _infoText = 'Abaixo do peso (${imc.toStringAsPrecision(3)})';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +40,7 @@ class _HomeState extends State<Home> {
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
-            onPressed: () {},
+            onPressed: _resetFields,
           ),
         ],
       ),
@@ -33,26 +55,28 @@ class _HomeState extends State<Home> {
               size: 120.0,
               color: (Colors.green),
             ),
-            const TextField(
+            TextField(
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Peso (kg)',
                 labelStyle: TextStyle(color: Colors.green),
               ),
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.green),
+              style: const TextStyle(color: Colors.green),
+              controller: weightController,
             ),
-            const TextField(
+            TextField(
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Altura (cm)',
                 labelStyle: TextStyle(color: Colors.green),
               ),
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.green),
+              style: const TextStyle(color: Colors.green),
+              controller: heightController,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: _calculate,
               style: ElevatedButton.styleFrom(
                 primary: const Color(0xff4caf50),
                 //padding: const EdgeInsets.only(top:10.0, bottom: 10.0),
@@ -65,10 +89,10 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
-            const Text(
-              "Info",
+            Text(
+              _infoText,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.green,
                 fontSize: 25.0,
               ),
