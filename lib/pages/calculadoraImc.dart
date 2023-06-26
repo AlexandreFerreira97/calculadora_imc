@@ -67,57 +67,60 @@ class _HomeState extends State<Home> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            const Icon(
-              Icons.person_outline,
-              size: 120.0,
-              color: (Colors.green),
-            ),
-            TextField(
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                labelText: 'Peso (kg)',
-                labelStyle: TextStyle(color: Colors.green),
+        child: Form(
+          key: formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              const Icon(
+                Icons.person_outline,
+                size: 120.0,
+                color: (Colors.green),
               ),
-              textAlign: TextAlign.center,
-              style: const TextStyle(color: Colors.green),
-              controller: weightController,
-            ),
-            TextField(
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                labelText: 'Altura (cm)',
-                labelStyle: TextStyle(color: Colors.green),
+              TextField(
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  labelText: 'Peso (kg)',
+                  labelStyle: TextStyle(color: Colors.green),
+                ),
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: Colors.green),
+                controller: weightController,
               ),
-              textAlign: TextAlign.center,
-              style: const TextStyle(color: Colors.green),
-              controller: heightController,
-            ),
-            ElevatedButton(
-              onPressed: _calculate,
-              style: ElevatedButton.styleFrom(
-                primary: const Color(0xff4caf50),
-                //padding: const EdgeInsets.only(top:10.0, bottom: 10.0),
+              TextField(
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  labelText: 'Altura (cm)',
+                  labelStyle: TextStyle(color: Colors.green),
+                ),
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: Colors.green),
+                controller: heightController,
               ),
-              child: const Text(
-                'Calcular',
-                style: TextStyle(
-                  color: Colors.white,
+              ElevatedButton(
+                onPressed: _calculate,
+                style: ElevatedButton.styleFrom(
+                  primary: const Color(0xff4caf50),
+                  //padding: const EdgeInsets.only(top:10.0, bottom: 10.0),
+                ),
+                child: const Text(
+                  'Calcular',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25.0,
+                  ),
+                ),
+              ),
+              Text(
+                _infoText,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Colors.green,
                   fontSize: 25.0,
                 ),
               ),
-            ),
-            Text(
-              _infoText,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: Colors.green,
-                fontSize: 25.0,
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
